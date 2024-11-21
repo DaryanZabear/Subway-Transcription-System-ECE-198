@@ -1,14 +1,5 @@
 /* USER CODE BEGIN Header */
 /**
- * BOARD 2 BOARD 2 BOARD 2
- * 2
- * 2
- * 2
- * 22
- *
- * 2
- * 2
- * 2
   ******************************************************************************
   * @file           : main.c
   * @brief          : Main program body
@@ -27,10 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "usart.h"
-#include "i2c.h"
-#include "lcd_i2c.h"
-#include "string.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -103,22 +90,15 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  char rx_buffer[100]; // Buffer for received data
-  // Initialize LCD
-  lcd_init(&hi2c1);
-  lcd_send_string("Waiting for data...");
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  // Receive data via UART
-	  HAL_UART_Receive(&huart2, (uint8_t*)rx_buffer, sizeof(rx_buffer), HAL_MAX_DELAY);
+    /* USER CODE END WHILE */
 
-	  // Clear LCD and display received message
-	  lcd_clear();
-	  lcd_send_string(rx_buffer); // Display the received message
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
