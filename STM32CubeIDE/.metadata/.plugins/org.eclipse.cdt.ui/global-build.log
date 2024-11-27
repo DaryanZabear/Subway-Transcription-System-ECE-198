@@ -1644,3 +1644,1302 @@ Finished building: default.size.stdout
  
 Finished building: Board 1.list
  
+02:24:32 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'send_announcement':
+../Core/Src/main.c:76:50: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   76 |     HAL_UART_Transmit(huart, (uint8_t *)message, strlen(message), HAL_MAX_DELAY);
+      |                                                  ^~~~~~
+../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   30 | #include "stdio.h"
+  +++ |+#include <string.h>
+   31 | 
+../Core/Src/main.c:76:50: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   76 |     HAL_UART_Transmit(huart, (uint8_t *)message, strlen(message), HAL_MAX_DELAY);
+      |                                                  ^~~~~~
+../Core/Src/main.c:76:50: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:9: warning: unused variable 'message' [-Wunused-variable]
+  112 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  11752	    104	   2048	  13904	   3650	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+02:30:24 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:32: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  129 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:129:32: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  129 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:129:32: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:132:42: warning: pointer targets in passing argument 1 of 'HD44780_PrintStr' differ in signedness [-Wpointer-sign]
+  132 |                         HD44780_PrintStr(buffer);
+      |                                          ^~~~~~
+      |                                          |
+      |                                          uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/main.c:22:
+../Core/Inc/liquidcrystal_i2c.h:86:23: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   86 | void HD44780_PrintStr(const char[]);
+      |                       ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16576	    104	   2136	  18816	   4980	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+02:30:57 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-size  Board\ 2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11752	    104	   2048	  13904	   3650	Board 2.elf
+Finished building: default.size.stdout
+ 
+02:32:14 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:131:32: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  131 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:131:32: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  131 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:131:32: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:134:42: warning: pointer targets in passing argument 1 of 'HD44780_PrintStr' differ in signedness [-Wpointer-sign]
+  134 |                         HD44780_PrintStr(buffer);
+      |                                          ^~~~~~
+      |                                          |
+      |                                          uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/main.c:22:
+../Core/Inc/liquidcrystal_i2c.h:86:23: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   86 | void HD44780_PrintStr(const char[]);
+      |                       ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17088	    120	   2144	  19352	   4b98	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+02:32:46 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-size  Board\ 1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17088	    120	   2144	  19352	   4b98	Board 1.elf
+Finished building: default.size.stdout
+ 
+02:36:15 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'send_announcement':
+../Core/Src/main.c:76:50: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   76 |     HAL_UART_Transmit(huart, (uint8_t *)message, strlen(message), HAL_MAX_DELAY);
+      |                                                  ^~~~~~
+../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   30 | #include "stdio.h"
+  +++ |+#include <string.h>
+   31 | 
+../Core/Src/main.c:76:50: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   76 |     HAL_UART_Transmit(huart, (uint8_t *)message, strlen(message), HAL_MAX_DELAY);
+      |                                                  ^~~~~~
+../Core/Src/main.c:76:50: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:9: warning: unused variable 'message' [-Wunused-variable]
+  112 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  11752	    104	   2048	  13904	   3650	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+02:36:37 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-size  Board\ 2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11752	    104	   2048	  13904	   3650	Board 2.elf
+Finished building: default.size.stdout
+ 
+02:41:28 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:147:32: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  147 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:147:32: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:161:1: error: expected identifier or '(' before '}' token
+  161 | }
+      | ^
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+02:41:49 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:147:32: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  147 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:147:32: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17148	    120	   2144	  19412	   4bd4	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+02:48:38 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'send_announcement':
+../Core/Src/main.c:75:50: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   75 |     HAL_UART_Transmit(huart, (uint8_t *)message, strlen(message), HAL_MAX_DELAY);
+      |                                                  ^~~~~~
+../Core/Src/main.c:30:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   29 | #include "main.h"
+  +++ |+#include <string.h>
+   30 | 
+../Core/Src/main.c:75:50: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   75 |     HAL_UART_Transmit(huart, (uint8_t *)message, strlen(message), HAL_MAX_DELAY);
+      |                                                  ^~~~~~
+../Core/Src/main.c:75:50: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  113 |     printf("Transmitter initialized. Sending messages...\r\n");
+      |     ^~~~~~
+../Core/Src/main.c:30:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   29 | #include "main.h"
+  +++ |+#include <stdio.h>
+   30 | 
+../Core/Src/main.c:113:5: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  113 |     printf("Transmitter initialized. Sending messages...\r\n");
+      |     ^~~~~~
+../Core/Src/main.c:113:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:120:11: error: redefinition of 'message'
+  120 |     char *message = "Hello from Transmitter!\r\n";
+      |           ^~~~~~~
+../Core/Src/main.c:111:9: note: previous definition of 'message' with type 'char *'
+  111 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+../Core/Src/main.c:120:11: warning: unused variable 'message' [-Wunused-variable]
+  120 |     char *message = "Hello from Transmitter!\r\n";
+      |           ^~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+02:49:05 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'send_announcement':
+../Core/Src/main.c:76:50: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   76 |     HAL_UART_Transmit(huart, (uint8_t *)message, strlen(message), HAL_MAX_DELAY);
+      |                                                  ^~~~~~
+../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   30 | #include "stdio.h"
+  +++ |+#include <string.h>
+   31 | 
+../Core/Src/main.c:76:50: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   76 |     HAL_UART_Transmit(huart, (uint8_t *)message, strlen(message), HAL_MAX_DELAY);
+      |                                                  ^~~~~~
+../Core/Src/main.c:76:50: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:121:11: error: redefinition of 'message'
+  121 |     char *message = "Hello from Transmitter!\r\n";
+      |           ^~~~~~~
+../Core/Src/main.c:112:9: note: previous definition of 'message' with type 'char *'
+  112 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+../Core/Src/main.c:121:11: warning: unused variable 'message' [-Wunused-variable]
+  121 |     char *message = "Hello from Transmitter!\r\n";
+      |           ^~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+02:49:38 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:122:11: error: redefinition of 'message'
+  122 |     char *message = "Hello from Transmitter!\r\n";
+      |           ^~~~~~~
+../Core/Src/main.c:113:9: note: previous definition of 'message' with type 'char *'
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+../Core/Src/main.c:122:11: warning: unused variable 'message' [-Wunused-variable]
+  122 |     char *message = "Hello from Transmitter!\r\n";
+      |           ^~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+02:50:07 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  11752	    104	   2048	  13904	   3650	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+02:54:47 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  13536	    104	   2048	  15688	   3d48	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+02:56:16 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  13516	    104	   2048	  15668	   3d34	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+02:57:11 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  13548	    104	   2048	  15700	   3d54	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+02:58:52 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  13516	    104	   2048	  15668	   3d34	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+07:47:32 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  11884	    104	   2048	  14036	   36d4	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+07:53:59 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:147:32: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  147 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:147:32: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17156	    120	   2144	  19420	   4bdc	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+07:54:36 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  11912	    104	   2048	  14064	   36f0	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+07:58:59 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:177:1: error: expected identifier or '(' before '}' token
+  177 | }
+      | ^
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+07:59:21 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  11924	    104	   2048	  14076	   36fc	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+08:09:58 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
+   85 |     int message_length = strlen((char *)message);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:147:32: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  147 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:147:32: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17096	    120	   2144	  19360	   4ba0	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+08:14:54 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:229:13: error: invalid storage class for function 'MX_USART1_UART_Init'
+  229 | static void MX_USART1_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:262:13: error: invalid storage class for function 'MX_USART2_UART_Init'
+  262 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:295:13: error: invalid storage class for function 'MX_GPIO_Init'
+  295 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:362:1: error: expected declaration or statement at end of input
+  362 | }
+      | ^
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:63:13: warning: 'MX_GPIO_Init' used but never defined
+   63 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:64:13: warning: 'MX_USART1_UART_Init' used but never defined
+   64 | static void MX_USART1_UART_Init(void);
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:65:13: warning: 'MX_USART2_UART_Init' used but never defined
+   65 | static void MX_USART2_UART_Init(void);
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:353:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  353 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:295:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  295 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:262:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  262 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:229:13: warning: 'MX_USART1_UART_Init' defined but not used [-Wunused-function]
+  229 | static void MX_USART1_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:182:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  182 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+08:15:32 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  11900	    104	   2048	  14052	   36e4	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+08:19:18 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
+   85 |     int message_length = strlen((char *)message);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:147:24: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+  147 |                 printf(buffer);
+      |                        ^~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/main.c:21:
+C:\ST\STM32CubeIDE_1.16.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c:148:32: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  148 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:148:32: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17104	    120	   2144	  19368	   4ba8	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+08:20:06 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
+   85 |     int message_length = strlen((char *)message);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:140:34: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  140 |       display_and_scroll_message("Testing");
+      |                                  ^~~~~~~~~
+      |                                  |
+      |                                  char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:147:24: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+  147 |                 printf(buffer);
+      |                        ^~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/main.c:21:
+C:\ST\STM32CubeIDE_1.16.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c:148:32: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  148 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:148:32: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17124	    120	   2144	  19388	   4bbc	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+08:20:57 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
+   85 |     int message_length = strlen((char *)message);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:140:34: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  140 |       display_and_scroll_message("Pending Announcement");
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~
+      |                                  |
+      |                                  char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:147:24: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+  147 |                 printf(buffer);
+      |                        ^~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/main.c:21:
+C:\ST\STM32CubeIDE_1.16.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c:148:32: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  148 |                         buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+      |                                ^~~~~~
+../Core/Src/main.c:148:32: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17140	    120	   2144	  19404	   4bcc	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+08:29:11 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: unused variable 'message' [-Wunused-variable]
+  113 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  12092	    104	   2048	  14244	   37a4	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+08:31:56 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:121:9: warning: unused variable 'message' [-Wunused-variable]
+  121 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  13888	    104	   2048	  16040	   3ea8	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+08:46:07 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:121:9: warning: unused variable 'message' [-Wunused-variable]
+  121 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  13840	    104	   2048	  15992	   3e78	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+08:46:54 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-size  Board\ 2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13840	    104	   2048	  15992	   3e78	Board 2.elf
+Finished building: default.size.stdout
+ 
+08:50:36 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
+   85 |     int message_length = strlen((char *)message);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:140:34: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  140 |       display_and_scroll_message("Pending Announcement");
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~
+      |                                  |
+      |                                  char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17116	    120	   2144	  19380	   4bb4	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+08:50:56 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-size  Board\ 1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17116	    120	   2144	  19380	   4bb4	Board 1.elf
+Finished building: default.size.stdout
+ 
+08:51:06 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-size  Board\ 1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17116	    120	   2144	  19380	   4bb4	Board 1.elf
+Finished building: default.size.stdout
+ 
+08:51:29 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-size  Board\ 1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17116	    120	   2144	  19380	   4bb4	Board 1.elf
+Finished building: default.size.stdout
+ 
+08:52:26 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-size  Board\ 1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17116	    120	   2144	  19380	   4bb4	Board 1.elf
+Finished building: default.size.stdout
+ 
+08:54:22 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
+   85 |     int message_length = strlen((char *)message);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:140:34: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  140 |       display_and_scroll_message("Pending Announcement");
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~
+      |                                  |
+      |                                  char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:216:13: error: invalid storage class for function 'MX_I2C1_Init'
+  216 | static void MX_I2C1_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:250:13: error: invalid storage class for function 'MX_USART1_UART_Init'
+  250 | static void MX_USART1_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:283:13: error: invalid storage class for function 'MX_USART2_UART_Init'
+  283 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:316:13: error: invalid storage class for function 'MX_GPIO_Init'
+  316 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:375:1: error: expected declaration or statement at end of input
+  375 | }
+      | ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:13: warning: 'MX_GPIO_Init' used but never defined
+   57 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:58:13: warning: 'MX_USART1_UART_Init' used but never defined
+   58 | static void MX_USART1_UART_Init(void);
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:59:13: warning: 'MX_I2C1_Init' used but never defined
+   59 | static void MX_I2C1_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:60:13: warning: 'MX_USART2_UART_Init' used but never defined
+   60 | static void MX_USART2_UART_Init(void);
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:366:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  366 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:316:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  316 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:283:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  283 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:250:13: warning: 'MX_USART1_UART_Init' defined but not used [-Wunused-function]
+  250 | static void MX_USART1_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:216:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
+  216 | static void MX_I2C1_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:169:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  169 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+08:54:37 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
+   85 |     int message_length = strlen((char *)message);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:140:34: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  140 |       display_and_scroll_message("Pending Announcement");
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~
+      |                                  |
+      |                                  char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17104	    120	   2144	  19368	   4ba8	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+08:58:31 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-size  Board\ 2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13840	    104	   2048	  15992	   3e78	Board 2.elf
+Finished building: default.size.stdout
+ 
+09:03:39 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
+   85 |     int message_length = strlen((char *)message);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:140:34: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  140 |       display_and_scroll_message("Pending Announcement");
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~
+      |                                  |
+      |                                  char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:144:12: error: conflicting types for 'buffer'; have 'char[100]'
+  144 |       char buffer[100];  // Adjust the buffer size as needed
+      |            ^~~~~~
+../Core/Src/main.c:131:13: note: previous declaration of 'buffer' with type 'uint8_t[150]' {aka 'unsigned char[150]'}
+  131 |     uint8_t buffer[150]; // Buffer for received data
+      |             ^~~~~~
+../Core/Src/main.c:149:22: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  149 |               buffer[strlen((char *)buffer)] = '\0';  // Null-terminate the received string
+      |                      ^~~~~~
+../Core/Src/main.c:149:22: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:155:19: warning: implicit declaration of function 'strcmp' [-Wimplicit-function-declaration]
+  155 |               if (strcmp(buffer, "SKIP") == 0) {
+      |                   ^~~~~~
+../Core/Src/main.c:155:19: note: include '<string.h>' or provide a declaration of 'strcmp'
+../Core/Src/main.c:156:46: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  156 |                   display_and_scroll_message("Train skipping next station.");
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                              |
+      |                                              char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:160:46: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  160 |                   display_and_scroll_message("Train delayed at next stop.");
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                              |
+      |                                              char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:164:46: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  164 |                   display_and_scroll_message("Door issue: use alternate exit.");
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                              |
+      |                                              char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:168:46: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  168 |                   display_and_scroll_message("Service disruption: next stop shuttle.");
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                              |
+      |                                              char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:173:46: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  173 |                   display_and_scroll_message("Unknown message.");
+      |                                              ^~~~~~~~~~~~~~~~~~
+      |                                              |
+      |                                              char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+09:04:13 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
+   85 |     int message_length = strlen((char *)message);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:140:34: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  140 |       display_and_scroll_message("Pending Announcement");
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~
+      |                                  |
+      |                                  char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:149:22: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  149 |               buffer[strlen((char *)buffer)] = '\0';  // Null-terminate the received string
+      |                      ^~~~~~
+../Core/Src/main.c:149:22: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:155:19: warning: implicit declaration of function 'strcmp' [-Wimplicit-function-declaration]
+  155 |               if (strcmp(buffer, "SKIP") == 0) {
+      |                   ^~~~~~
+../Core/Src/main.c:155:19: note: include '<string.h>' or provide a declaration of 'strcmp'
+../Core/Src/main.c:155:26: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  155 |               if (strcmp(buffer, "SKIP") == 0) {
+      |                          ^~~~~~
+      |                          |
+      |                          uint8_t * {aka unsigned char *}
+../Core/Src/main.c:155:26: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:156:46: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  156 |                   display_and_scroll_message("Train skipping next station.");
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                              |
+      |                                              char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:159:31: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  159 |               else if (strcmp(buffer, "DELAY") == 0) {
+      |                               ^~~~~~
+      |                               |
+      |                               uint8_t * {aka unsigned char *}
+../Core/Src/main.c:159:31: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:160:46: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  160 |                   display_and_scroll_message("Train delayed at next stop.");
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                              |
+      |                                              char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:163:31: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  163 |               else if (strcmp(buffer, "DOOR") == 0) {
+      |                               ^~~~~~
+      |                               |
+      |                               uint8_t * {aka unsigned char *}
+../Core/Src/main.c:163:31: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:164:46: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  164 |                   display_and_scroll_message("Door issue: use alternate exit.");
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                              |
+      |                                              char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:167:31: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  167 |               else if (strcmp(buffer, "SHUTTLE") == 0) {
+      |                               ^~~~~~
+      |                               |
+      |                               uint8_t * {aka unsigned char *}
+../Core/Src/main.c:167:31: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:168:46: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  168 |                   display_and_scroll_message("Service disruption: next stop shuttle.");
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                              |
+      |                                              char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+../Core/Src/main.c:173:46: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  173 |                   display_and_scroll_message("Unknown message.");
+      |                                              ^~~~~~~~~~~~~~~~~~
+      |                                              |
+      |                                              char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17736	    120	   2144	  20000	   4e20	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+09:04:51 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:121:9: warning: unused variable 'message' [-Wunused-variable]
+  121 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  13644	    104	   2048	  15796	   3db4	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+09:06:12 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:121:9: warning: unused variable 'message' [-Wunused-variable]
+  121 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  13840	    104	   2048	  15992	   3e78	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+09:07:18 **** Incremental Build of configuration Debug for project Board 1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display_and_scroll_message':
+../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   22 | #include "liquidcrystal_i2c.h"
+  +++ |+#include <string.h>
+   23 | 
+../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   85 |     int message_length = strlen((char *)message);
+      |                          ^~~~~~
+../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
+   85 |     int message_length = strlen((char *)message);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:140:34: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  140 |       display_and_scroll_message("Pending Announcement");
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~
+      |                                  |
+      |                                  char *
+../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   80 | void display_and_scroll_message(uint8_t *message) {
+      |                                 ~~~~~~~~~^~~~~~~
+arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 1.elf
+ 
+arm-none-eabi-size  Board\ 1.elf 
+arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
+   text	   data	    bss	    dec	    hex	filename
+  17104	    120	   2144	  19368	   4ba8	Board 1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 1.list
+ 
+09:09:22 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:121:9: warning: unused variable 'message' [-Wunused-variable]
+  121 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  13824	    104	   2048	  15976	   3e68	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 
+09:10:50 **** Incremental Build of configuration Debug for project Board 2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:121:9: warning: unused variable 'message' [-Wunused-variable]
+  121 |   char *message = "Hello from Transmitter!\r\n";
+      |         ^~~~~~~
+arm-none-eabi-gcc -o "Board 2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\Board 2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Board 2.elf
+ 
+arm-none-eabi-size  Board\ 2.elf 
+arm-none-eabi-objdump -h -S Board\ 2.elf  > "Board 2.list"
+   text	   data	    bss	    dec	    hex	filename
+  13840	    104	   2048	  15992	   3e78	Board 2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Board 2.list
+ 

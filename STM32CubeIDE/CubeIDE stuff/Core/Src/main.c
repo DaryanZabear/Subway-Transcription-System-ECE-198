@@ -77,6 +77,22 @@ int _write(int file, char *data, int len) {
     HAL_UART_Transmit(&huart2, (uint8_t *)data, len, HAL_MAX_DELAY); // Transmit via UART1
     return len; // Return the number of bytes transmitted
 }
+void display_and_scroll_message(uint8_t *message) {
+    HD44780_Clear();
+    HD44780_SetCursor(0, 0);
+    HD44780_PrintStr((char *)message); // Display message on LCD
+
+    int message_length = strlen((char *)message);
+    int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+
+    /*if (message_length > visible_width) {
+        // Scroll only if the message is longer than visible width
+        for (int x = 0; x < (message_length - visible_width + 1); x++) {
+            HAL_Delay(500); // Adjust scroll speed as needed
+            HD44780_ScrollDisplayLeft();
+        }
+    }*/
+}
 /* USER CODE END 0 */
 
 /**
@@ -112,62 +128,39 @@ int main(void)
   MX_I2C1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-    uint8_t buffer[100]; // Buffer for received data
+    uint8_t buffer[150]; // Buffer for received data
     printf("Receiver initialized. Waiting for messages...\r\n");
     //HAL_UART_Transmit(&huart2, (uint32_t*)msg, strlen(msg), HAL_MAX_DELAY);
     /* USER CODE END 2 */
     /* USER CODE BEGIN 2 */
-      HD44780_Init(2);
+    HD44780_Init(2);
       HD44780_Clear();
       HD44780_SetCursor(0,0);
-      HD44780_PrintStr("HELLO");
-      HD44780_SetCursor(10,1);
-      HD44780_PrintStr("WORLD");
-      HAL_Delay(2000);
 
-      HD44780_Clear();
-      HD44780_SetCursor(0,0);
-      HD44780_PrintStr("HELLO");
-      HAL_Delay(2000);
-      HD44780_NoBacklight();
-      HAL_Delay(2000);
-      HD44780_Backlight();
-
-      HAL_Delay(2000);
-      HD44780_Cursor();
-      HAL_Delay(2000);
-      HD44780_Blink();
-      HAL_Delay(5000);
-      HD44780_NoBlink();
-      HAL_Delay(2000);
-      HD44780_NoCursor();
-      HAL_Delay(2000);
-
-      HD44780_NoDisplay();
-      HAL_Delay(2000);
-      HD44780_Display();
-
-      HD44780_Clear();
-      HD44780_SetCursor(0,0);
-      HD44780_PrintStr("We are skipping the next stop");
-
-
+      display_and_scroll_message("Pending Announcement");
       /* USER CODE END 2 */
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
     while (1)
     {
-      /* USER CODE END WHILE */
-  	  if (HAL_UART_Receive(&huart1, buffer, sizeof(buffer) - 1, HAL_MAX_DELAY) == HAL_OK) {
-  	              buffer[strlen((char *)buffer)] = '\0'; // Null-terminate received string
+    	 // Receive data from UART
+    	    HAL_UART_Receive(&huart1, buffer, sizeof(buffer) - 1, HAL_MAX_DELAY);
 
-  	           // Print received message to terminal
-  	              printf("Message received: %s\r\n", buffer);
-  	   }
+    	    // Null-terminate the received data to avoid any issues
+    	    buffer[sizeof(buffer) - 1] = '\0';
+
+    	    // Print received message to terminal
+    	    printf("Message received: %s\r\n", buffer);
+
+    	    // Display and scroll the message on the LCD
+    	    display_and_scroll_message(buffer);
+
+    	    // Add a delay if necessary
+    	    HAL_Delay(10000);  // Adjust delay based on your needs
       /* USER CODE BEGIN 3 */
-    }
     /* USER CODE END 3 */
   /* USER CODE END 3 */
+}
 }
 
 /**
