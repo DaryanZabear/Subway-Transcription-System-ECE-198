@@ -1,0 +1,69 @@
+#include "i2c-lcd.h"
+#include "stm32f4xx_hal.h"
+
+// I2C handler
+extern I2C_HandleTypeDef hi2c1;
+
+// LCD commands
+#define LCD_ADDRESS 0x4E // I2C Address of the LCD
+#define LCD_CLEARDISPLAY 0x01
+#define LCD_RETURNHOME 0x02
+#define LCD_ENTRYMODESET 0x04
+#define LCD_DISPLAYCONTROL 0x08
+#define LCD_CURSORSHIFT 0x10
+#define LCD_FUNCTIONSET 0x20
+#define LCD_SETCGRAMADDR 0x40
+#define LCD_SETDDRAMADDR 0x80
+
+// Initialize the LCD
+void LCD_Init(void)
+{
+    HAL_Delay(50);  // Wait for the LCD to power on
+    LCD_SendCommand(0x33); // 4-bit mode initialization
+    LCD_SendCommand(0x32); // 4-bit mode initialization
+    LCD_SendCommand(LCD_FUNCTIONSET | 0x28); // Set 2-line mode
+    LCD_SendCommand(LCD_DISPLAYCONTROL | 0x04); // Display ON, Cursor OFF
+    LCD_SendCommand(LCD_ENTRYMODESET | 0x06); // Set entry mode
+    LCD_Clear();
+}
+
+// Send a command to the LCD
+void LCD_SendCommand(uint8_t cmd)
+{
+    uint8_t data[2] = {cmd, 0};
+    HAL_I2C_Master_Transmit(&hi2c1, LCD_ADDRESS, data, 1, 100);
+}
+
+// Send data (character) to the LCD
+void LCD_SendData(uint8_t data)
+{
+    uint8_t buf[2] = {data, 1};
+    HAL_I2C_Master_Transmit(&hi2c1, LCD_ADDRESS, buf, 1, 100);
+}
+
+// Print a string on the LCD
+void LCD_Print(char *str)
+{
+    while (*str)
+    {
+        LCD_SendData(*str++);
+    }
+}
+
+// Set cursor to a specific location
+void LCD_SetCursor(uint8_t row, uint8_t col)
+{
+    uint8_t address;
+    if (row == 0)
+        address = 0x80 + col;
+    else
+        address = 0xC0 + col;
+    LCD_SendCommand(address);
+}
+
+// Clear the LCD
+void LCD_Clear(void)
+{
+    LCD_SendCommand(LCD_CLEARDISPLAY);
+    HAL_Delay(2); // Wait for the command to execute
+}
