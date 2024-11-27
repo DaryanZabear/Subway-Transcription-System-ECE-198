@@ -1,32 +1,55 @@
-09:07:18 **** Incremental Build of configuration Debug for project Board 1 ****
+09:29:35 **** Incremental Build of configuration Debug for project Board 1 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'display_and_scroll_message':
-../Core/Src/main.c:85:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
-   85 |     int message_length = strlen((char *)message);
+../Core/Src/main.c:79:5: warning: implicit declaration of function 'HD44780_Clear' [-Wimplicit-function-declaration]
+   79 |     HD44780_Clear();
+      |     ^~~~~~~~~~~~~
+../Core/Src/main.c:80:5: warning: implicit declaration of function 'HD44780_SetCursor' [-Wimplicit-function-declaration]
+   80 |     HD44780_SetCursor(0, 0);
+      |     ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:81:5: warning: implicit declaration of function 'HD44780_PrintStr' [-Wimplicit-function-declaration]
+   81 |     HD44780_PrintStr((char *)message); // Display message on LCD
+      |     ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:83:26: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   83 |     int message_length = strlen((char *)message);
       |                          ^~~~~~
-../Core/Src/main.c:23:1: note: include '<string.h>' or provide a declaration of 'strlen'
-   22 | #include "liquidcrystal_i2c.h"
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
   +++ |+#include <string.h>
-   23 | 
-../Core/Src/main.c:85:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
-   85 |     int message_length = strlen((char *)message);
+   21 | 
+../Core/Src/main.c:83:26: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   83 |     int message_length = strlen((char *)message);
       |                          ^~~~~~
-../Core/Src/main.c:85:26: note: include '<string.h>' or provide a declaration of 'strlen'
-../Core/Src/main.c:86:9: warning: unused variable 'visible_width' [-Wunused-variable]
-   86 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
+../Core/Src/main.c:83:26: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:84:9: warning: unused variable 'visible_width' [-Wunused-variable]
+   84 |     int visible_width = 16; // Adjust to your LCD width (e.g., 16x2 or 20x4)
       |         ^~~~~~~~~~~~~
-../Core/Src/main.c:85:9: warning: unused variable 'message_length' [-Wunused-variable]
-   85 |     int message_length = strlen((char *)message);
+../Core/Src/main.c:83:9: warning: unused variable 'message_length' [-Wunused-variable]
+   83 |     int message_length = strlen((char *)message);
       |         ^~~~~~~~~~~~~~
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:140:34: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
-  140 |       display_and_scroll_message("Pending Announcement");
-      |                                  ^~~~~~~~~~~~~~~~~~~~~~
-      |                                  |
-      |                                  char *
-../Core/Src/main.c:80:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
-   80 | void display_and_scroll_message(uint8_t *message) {
+../Core/Src/main.c:129:7: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  129 |       printf("Receiver initialized. Waiting for messages...\r\n");
+      |       ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:129:7: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  129 |       printf("Receiver initialized. Waiting for messages...\r\n");
+      |       ^~~~~~
+../Core/Src/main.c:129:7: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:133:7: warning: implicit declaration of function 'HD44780_Init' [-Wimplicit-function-declaration]
+  133 |       HD44780_Init(2);
+      |       ^~~~~~~~~~~~
+../Core/Src/main.c:137:36: warning: pointer targets in passing argument 1 of 'display_and_scroll_message' differ in signedness [-Wpointer-sign]
+  137 |         display_and_scroll_message("Pending Announcement");
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    char *
+../Core/Src/main.c:78:42: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   78 | void display_and_scroll_message(uint8_t *message) {
       |                                 ~~~~~~~~~^~~~~~~
 arm-none-eabi-gcc -o "Board 1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\daiya\ECE 198\Subway-Transcription-System\STM32CubeIDE\CubeIDE stuff\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Board 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Board 1.elf
@@ -34,11 +57,11 @@ Finished building target: Board 1.elf
 arm-none-eabi-size  Board\ 1.elf 
 arm-none-eabi-objdump -h -S Board\ 1.elf  > "Board 1.list"
    text	   data	    bss	    dec	    hex	filename
-  17104	    120	   2144	  19368	   4ba8	Board 1.elf
+  17156	    120	   2144	  19420	   4bdc	Board 1.elf
 Finished building: default.size.stdout
  
 Finished building: Board 1.list
  
 
-09:07:19 Build Finished. 0 errors, 5 warnings. (took 1s.544ms)
+09:29:37 Build Finished. 0 errors, 11 warnings. (took 1s.590ms)
 

@@ -125,43 +125,20 @@ int main(void)
   MX_USART1_UART_Init();
   MX_I2C1_Init();
   MX_USART2_UART_Init();
-  uint8_t buffer[150]; // Buffer for received data
-      printf("Receiver initialized. Waiting for messages...\r\n");
-      //HAL_UART_Transmit(&huart2, (uint32_t*)msg, strlen(msg), HAL_MAX_DELAY);
-      /* USER CODE END 2 */
-      /* USER CODE BEGIN 2 */
-      HD44780_Init(2);
-        HD44780_Clear();
-        HD44780_SetCursor(0,0);
+  /* USER CODE BEGIN 2 */
+    uint8_t buffer[150]; // Buffer for received data
+    printf("Receiver initialized. Waiting for messages...\r\n");
+    //HAL_UART_Transmit(&huart2, (uint32_t*)msg, strlen(msg), HAL_MAX_DELAY);
+  /* USER CODE END 2 */
 
-        display_and_scroll_message("Pending Announcement");
-        /* USER CODE END 2 */
-      /* Infinite loop */
-      /* USER CODE BEGIN WHILE */
-      while (1)
-      {
-      	 // Receive data from UART
-      	    HAL_UART_Receive(&huart1, buffer, sizeof(buffer) - 1, HAL_MAX_DELAY);
-      	    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    /* USER CODE END WHILE */
 
-      	    // Null-terminate the received data to avoid any issues
-      	    buffer[sizeof(buffer) - 1] = '\0';
-
-
-      	    // Print received message to terminal
-      	    printf("Message received: %s\r\n", buffer);
-
-      	    // Display and scroll the message on the LCD
-      	    display_and_scroll_message(buffer);
-
-      	    // Add a delay if necessary
-      	    HAL_Delay(1000);  // Adjust delay based on your needs
-      	    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
-
-        /* USER CODE BEGIN 3 */
-      /* USER CODE END 3 */
-    /* USER CODE END 3 */
-      }
+    /* USER CODE BEGIN 3 */
+  /* USER CODE END 3 */
 }
 
 /**

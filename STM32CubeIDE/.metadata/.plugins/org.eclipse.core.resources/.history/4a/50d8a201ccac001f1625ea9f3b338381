@@ -142,7 +142,6 @@ int main(void)
       {
       	 // Receive data from UART
       	    HAL_UART_Receive(&huart1, buffer, sizeof(buffer) - 1, HAL_MAX_DELAY);
-      	    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 
       	    // Null-terminate the received data to avoid any issues
       	    buffer[sizeof(buffer) - 1] = '\0';
@@ -155,7 +154,7 @@ int main(void)
       	    display_and_scroll_message(buffer);
 
       	    // Add a delay if necessary
-      	    HAL_Delay(1000);  // Adjust delay based on your needs
+      	    HAL_Delay(10000);  // Adjust delay based on your needs
       	    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
 
         /* USER CODE BEGIN 3 */
